@@ -1,4 +1,4 @@
-def songparser():
+def songparser():           #parse txt file and place words in array
     textf = input("input songtext file")+ ".txt"
     tf = open(textf,"r")
     lines= tf.readlines()
@@ -28,7 +28,7 @@ def songparser():
     print(wordlist)
     
     
-def getlength(filename):
+def getlength(filename):     #return num of frames in WAV file
     import wave
     import contextlib
     fname = filename
@@ -39,7 +39,7 @@ def getlength(filename):
     return duration
 
 
-def frames():
+def frames():     #split WAV file in iundividual word files
     import wave
     global filename,x
     x=0
@@ -66,7 +66,7 @@ def frames():
         t2+=5
         
         
-def sr(x):
+def sr(x):    #return aray of words detected in speech file using speech recognition
     import speech_recognition as sr
     r = sr.Recognizer()
     global words
@@ -84,7 +84,7 @@ def sr(x):
                 print("unknown")
     print(words)
 
-def splitter():
+def splitter():       #segement audio according to spaces in speech. (this one works better)
     from pydub import AudioSegment
     from pydub.silence import split_on_silence
     global x
@@ -97,11 +97,15 @@ def splitter():
          print ("exporting", out_file)
          chunk.export(out_file, format="wav")
          x+=1
-def remove(x):
+        
+        
+def remove(x):       #delete temp word files
     import os
     for i in  range (x):
         os.remove(".//splitAudio//chunk{0}.wav".format(i))
-def wordfinder(wordlist,words):
+        
+        
+def wordfinder(wordlist,words):     #rearrange the speech file sto match txt file
     reorder=[0]*len(wordlist)
     from pydub import AudioSegment
     print(wordlist,words)
