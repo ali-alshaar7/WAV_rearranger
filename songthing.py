@@ -26,6 +26,8 @@ def songparser():
                 word3 = word3 + word2[j]
                 wordlist[i]=word3.upper()
     print(wordlist)
+    
+    
 def getlength(filename):
     import wave
     import contextlib
@@ -35,6 +37,8 @@ def getlength(filename):
         rate = f.getframerate()
         duration = frames / int(rate)
     return duration
+
+
 def frames():
     import wave
     global filename,x
@@ -60,6 +64,8 @@ def frames():
                 l=0
                 x+=1
         t2+=5
+        
+        
 def sr(x):
     import speech_recognition as sr
     r = sr.Recognizer()
